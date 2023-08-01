@@ -31,6 +31,7 @@ vector<int> Dijkstras(map<int,list<pair<int,int>>>adj,int src)
 }
 int main()
 {
+    unordered_map<int,char>color = colour();
     vector<string>v = stationcode();
     map<int,list<pair<int,int>>>adj = preparelist();
     cout<<"Press 1 to show all station else press any other key"<<endl;
@@ -93,12 +94,37 @@ int main()
     result.push_back(src);
     reverse(result.begin(),result.end());
     cout<<"********************HAPPY JOURNEY********************"<<endl<<endl;
-    for(int i = 0;i<result.size()-1;i++)
+    char a;
+    a = (color[result[0]] != 'n')?color[result[0]] :color[result[1]];
+    for(int i = 0;i<result.size();i++)
     {
-        cout<<v[result[i]]<<" -> ";
+        if(color[result[i]]!=a&&color[result[i]]!='n')
+        {
+            cout<<endl<<endl;
+            if(color[result[i]]=='b')
+            {
+                cout<<"\t\tCHANGE HERE FOR BLUE LINE"<<endl<<endl;
+            }
+            else if(color[result[i]]=='g')
+            {
+                cout<<"\t\tCHANGE HERE FOR GREEN LINE"<<endl<<endl;
+            }
+            else if(color[result[i]]=='r')
+            {
+                cout<<"\t\tCHANGE HERE FOR RED LINE"<<endl<<endl;
+            }
+        }
+        cout<<v[result[i]];
+        if(i != result.size()-1)
+        {
+            cout<<" -> ";
+        }
+        if(color[result[i]]!='n')
+        {
+            a = color[result[i]];
+        }
     }
-    cout<<v[result[result.size()-1]];
-    cout<<endl;
+    cout<<endl<<endl;
     cout<<"********************STATION ARRIVED********************"<<endl<<endl;
     return 0;
 }
