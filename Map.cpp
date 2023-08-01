@@ -97,3 +97,23 @@ vector<string>stationcode()
     v.push_back("SULTAN BAZAAR");
     return v;
 }
+unordered_map<int,char>colour()
+{
+    unordered_map<int,char>mp;
+    for(int i = 0;i<27;i++)
+    {
+        mp[i]='r';
+    }
+    for(int i = 27;i<49;i++)
+    {
+        mp[i]='b';
+    }
+    for(int i = 49;i<57;i++)
+    {
+        mp[i]='g';
+    }
+    mp[10] = 'n';
+    mp[19] = 'n';
+    mp[35] = 'n';
+    return mp;
+}
